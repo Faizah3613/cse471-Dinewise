@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ProtectedRoute from '../components/ProtectedRoute';
+import { API_URL } from '../config';
 
 const EditTable = () => {
   const { id } = useParams();
@@ -18,7 +19,7 @@ const EditTable = () => {
     const fetchTable = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5002/api/tables/${id}`, {
+        const response = await fetch(`${API_URL}/api/tables/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`
           }
@@ -61,7 +62,7 @@ const EditTable = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5002/api/tables/${id}/status`, {
+      const response = await fetch(`${API_URL}/api/tables/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

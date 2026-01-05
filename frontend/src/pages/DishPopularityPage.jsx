@@ -12,6 +12,7 @@ import { LuSalad } from "react-icons/lu";
 import { TbMeat } from "react-icons/tb";
 import { LiaBaconSolid } from "react-icons/lia";
 import { RiDrinks2Fill } from "react-icons/ri";
+import { API_URL } from '../config';
 
 
 
@@ -24,7 +25,7 @@ const DishPopularityPage = () => {
   useEffect(() => {
     const fetchDishPopularity = async () => {
       try {
-        const response = await axios.get("http://localhost:5002/api/analytics/dish-popularity");
+        const response = await axios.get(`${API_URL}/api/analytics/dish-popularity`);
         
         // Transform data to match expected frontend structure
         const transformedData = response.data.map(item => ({

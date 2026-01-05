@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { Plus, Minus, ArrowLeft } from 'lucide-react';
+import { API_URL } from '../config';
 
 const NewOrder = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const NewOrder = () => {
   useEffect(() => {
     const fetchTables = async () => {
       try {
-        const response = await fetch('http://localhost:5002/api/tables?status=available');
+        const response = await fetch(`${API_URL}/api/tables?status=available`);
         if (!response.ok) throw new Error('Failed to fetch tables');
         const data = await response.json();
         setTables(data);
@@ -52,7 +53,7 @@ const NewOrder = () => {
       if (formData.items.some(item => !item.name.trim())) throw new Error('All items need a name');
 
       // POST request to place the order
-      const response = await fetch('http://localhost:5002/api/orders', {
+      const response = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

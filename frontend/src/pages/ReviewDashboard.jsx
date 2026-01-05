@@ -4,6 +4,7 @@ import axios from 'axios';
 // import { jwtDecode } from 'jwt-decode';
 import Navbar from '../components/Navbar';
 import toast from 'react-hot-toast';
+import { API_URL } from '../config';
 
 const ReviewDashboard = () => {
   const [reviews, setReviews] = useState([]);
@@ -28,7 +29,7 @@ const ReviewDashboard = () => {
 
   // Create axios instance with auth header
   const api = axios.create({
-    baseURL: 'http://localhost:5002/api',
+    baseURL: `${API_URL}/api`,
     headers: {
       'Authorization': `Bearer ${getAuthToken()}`
     }

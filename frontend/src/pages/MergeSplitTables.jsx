@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import Navbar from "../components/Navbar";
 import { Plus, Split, RefreshCcw } from "lucide-react";
 import ProtectedRoute from "../components/ProtectedRoute"; // ADD IMPORT
+import { API_URL } from '../config';
 
 const MergeSplitTables = () => {
   const [tables, setTables] = useState([]);
@@ -17,7 +18,7 @@ const MergeSplitTables = () => {
 
   // Create axios instance with auth header
   const api = axios.create({
-    baseURL: 'http://localhost:5002/api',
+    baseURL: `${API_URL}/api`,
     headers: {
       'Authorization': `Bearer ${getAuthToken()}`
     }

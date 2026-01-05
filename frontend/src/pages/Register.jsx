@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ const Register = () => {
     }
 
     // Send the registration data to the backend
-    const response = await fetch('http://localhost:5002/api/users/register', {
+    const response = await fetch(`${API_URL}/api/users/register`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, role }), // Include the role in the request

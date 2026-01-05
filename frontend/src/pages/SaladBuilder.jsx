@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import Navbar from '../components/Navbar';
+import { API_URL } from '../config';
 
 const SaladBuilder = () => {
   const navigate = useNavigate();
@@ -14,6 +15,7 @@ const SaladBuilder = () => {
   const [aiRecommendations, setAiRecommendations] = useState([]);
   const [tableNumber, setTableNumber] = useState('');
   const [isPlacingOrder, setIsPlacingOrder] = useState(false);
+  
 
   const dietaryGoals = [
     { value: '', label: 'Choose a goal...' },
@@ -30,7 +32,7 @@ const SaladBuilder = () => {
 
   const fetchIngredients = async () => {
     try {
-      const response = await fetch('http://localhost:5002/api/salad/ingredients');
+      const response = await fetch(`${API_URL}/api/salad/ingredients`);
       const data = await response.json();
       if (data.success) {
         setIngredients(data.data);
@@ -46,7 +48,7 @@ const SaladBuilder = () => {
     if (!dietaryGoal) return;
     
     try {
-      const response = await fetch('http://localhost:5002/api/salad/recommend', {
+      const response = await fetch(`${API_URL}/api/salad/recommend`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -93,7 +95,7 @@ const SaladBuilder = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5002/api/salad/calculate-price', {
+      const response = await fetch(`${API_URL}/api/salad/calculate-price`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -136,7 +138,7 @@ const placeSaladOrder = async () => {
     };
 
     // CHANGE THIS LINE - use the new endpoint
-    const response = await fetch('http://localhost:5002/api/orders/salad-order', {
+    const response = await fetch(`${API_URL}/api/orders/salad-order`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

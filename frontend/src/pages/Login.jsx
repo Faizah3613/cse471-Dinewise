@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate,Link } from 'react-router-dom';
+import { API_URL } from '../config';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -11,7 +12,7 @@ const Login = () => {
     e.preventDefault();
 
     // Make an API call to validate login credentials
-    const response = await fetch('http://localhost:5002/api/users/login', {
+    const response = await fetch(`${API_URL}/api/users/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),

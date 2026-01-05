@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import toast from 'react-hot-toast';
+import { API_URL } from '../config'; 
 
 const SentimentAnalysis = () => {
   const [feedbackText, setFeedbackText] = useState('');
@@ -16,7 +17,7 @@ const SentimentAnalysis = () => {
     setIsAnalyzing(true);
     
     try {
-      const response = await fetch('http://localhost:5002/api/sentiment/analyze', {
+      const response = await fetch(`${API_URL}/api/sentiment/analyze`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from '../components/ProtectedRoute';
+import { API_URL } from '../config';
 
 // Fallback icons if Lucide fails (using simple text)
 const PlusIcon = () => <span>+</span>;
@@ -17,7 +18,7 @@ const TableDashboard = () => {
   const fetchTables = () => {
     const token = localStorage.getItem('token'); // Get token from localStorage
     
-    fetch("http://localhost:5002/api/tables", {
+    fetch(`${API_URL}/api/tables`, {
       headers: {
         'Authorization': `Bearer ${token}` // Add authorization header
       }

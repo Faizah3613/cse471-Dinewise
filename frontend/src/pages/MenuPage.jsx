@@ -127,6 +127,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { API_URL } from '../config'; // ADDED
 
 const MenuPage = () => {
   const navigate = useNavigate();
@@ -143,7 +144,7 @@ const MenuPage = () => {
     const fetchMenu = async (lang = language) => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5002/api/translation/menu?lang=${lang}`, {
+        const response = await axios.get(`${API_URL}/api/translation/menu?lang=${lang}`, {
           signal: controller.signal
         });
         setMenu(response.data.data); // CHANGED: .data.data

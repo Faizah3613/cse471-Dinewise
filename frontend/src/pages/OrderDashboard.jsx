@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import ProtectedRoute from '../components/ProtectedRoute';
 import Navbar from '../components/Navbar';
 import { Plus, Pencil } from 'lucide-react';
+import { API_URL } from '../config';
 
 const OrderDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -23,7 +24,7 @@ const OrderDashboard = () => {
       
       const token = localStorage.getItem('token');
       
-      const response = await fetch(`http://localhost:5002${endpoint}`, {
+      const response = await fetch(`${API_URL}${endpoint}`, {
         method: 'GET',
         headers: {
           'Authorization': `Bearer ${token}`,  

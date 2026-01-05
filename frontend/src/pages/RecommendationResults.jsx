@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import Navbar from '../components/Navbar';
+import { API_URL } from '../config';
 
 const RecommendationResults = () => {
   const navigate = useNavigate();
@@ -35,7 +36,7 @@ const RecommendationResults = () => {
   const fetchRecommendations = async () => {
     try {
       setLoading(true);
-      const response = await fetch(`http://localhost:5002/api/recommendations?${searchParams.toString()}`);
+      const response = await fetch(`${API_URL}/api/recommendations?${searchParams.toString()}`);
       const data = await response.json();
       
       if (data.success) {

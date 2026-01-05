@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import ProtectedRoute from '../components/ProtectedRoute'; 
+import { API_URL } from '../config';
 
 const NewTable = () => {
   const navigate = useNavigate();
@@ -32,7 +33,7 @@ const NewTable = () => {
     try {
       const token = localStorage.getItem('token'); // GET TOKEN
       
-      const response = await fetch('http://localhost:5002/api/tables', {
+      const response = await fetch(`${API_URL}/api/tables`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

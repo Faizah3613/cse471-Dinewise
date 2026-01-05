@@ -5,6 +5,7 @@ import axios from "axios";
 import Navbar from "../components/Navbar";
 import { Trash2 } from "lucide-react";
 import ProtectedRoute from "../components/ProtectedRoute"; // ADD THIS IMPORT
+import { API_URL } from '../config';
 
 const EditOrder = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const EditOrder = () => {
 
   // Create axios instance with auth header
   const api = axios.create({
-    baseURL: 'http://localhost:5002/api',
+    baseURL: `${API_URL}/api`,
     headers: {
       'Authorization': `Bearer ${getAuthToken()}`
     }

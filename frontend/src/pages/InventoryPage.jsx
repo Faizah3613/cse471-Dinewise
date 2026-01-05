@@ -5,6 +5,7 @@ import { Chart as ChartJS, Title, Tooltip, ArcElement, CategoryScale, LinearScal
 import ChartDataLabels from "chartjs-plugin-datalabels";
 import Navbar from "../components/Navbar";
 import ProtectedRoute from '../components/ProtectedRoute';
+import { API_URL } from '../config';
 
 // Register necessary Chart.js components
 ChartJS.register(Title, Tooltip, ArcElement, CategoryScale, LinearScale, ChartDataLabels);
@@ -17,7 +18,7 @@ const Inventory = () => {
 
   // Fetch ingredient data from backend
   useEffect(() => {
-    fetch("http://localhost:5002/api/inventory/ingredients", {
+    fetch(`${API_URL}/api/inventory/ingredients`, {
       headers: {
         "Authorization": `Bearer ${localStorage.getItem('token')}`
       }
@@ -50,7 +51,7 @@ const Inventory = () => {
     const token = localStorage.getItem('token');
   
     // Send the data to the backend to update the stock
-    fetch("http://localhost:5002/api/inventory/ingredients/addStock", {
+    fetch(`${API_URL}/api/inventory/ingredients/addStock`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
