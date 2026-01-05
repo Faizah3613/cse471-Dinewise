@@ -113,7 +113,7 @@ const Navbar = () => {
                 location.pathname === '/' ? activeClass : ''
               }`}
             >
-              Home
+              🛖 Home
             </Link>
 
             <Link
@@ -122,7 +122,7 @@ const Navbar = () => {
                 location.pathname === '/tables' ? activeClass : ''
               }`}
             >
-              Live Tables
+              🍴 Live Tables
             </Link>
 
             <Link
@@ -131,7 +131,7 @@ const Navbar = () => {
                 location.pathname === '/orders' ? activeClass : ''
               }`}
             >
-              Orders
+              🍽️ Orders
             </Link>
 
             <Link
@@ -140,7 +140,7 @@ const Navbar = () => {
                 location.pathname === '/menu' ? activeClass : ''
               }`}
             >
-              Our Menu
+              📕 Our Menu
             </Link>
 
             {/* NEW: AI Recommendations Link */}
@@ -160,7 +160,7 @@ const Navbar = () => {
                 location.pathname === '/salad-builder' ? activeClass : ''
               }`}
             >
-              🥗 Build Salad
+              🥬 Build Salad
             </Link>
 
             <Link
@@ -169,28 +169,37 @@ const Navbar = () => {
                 location.pathname === '/dish-popularity' ? activeClass : ''
               }`}
             >
-              Dish Popularity
+              🔥 Dish Popularity
             </Link>
 
             {/* New Inventory Link */}
-            <Link
+            {/* <Link
               to="/inventory"
               className={`px-4 py-2 rounded-full border-2 border-amber-100 bg-amber-600/20 text-amber-100 hover:bg-amber-600/40 transition-all duration-200 ${
                 location.pathname === '/inventory' ? activeClass : ''
               }`}
             >
               Inventory
+            </Link> */}
+
+            <Link
+              to="/reviews"
+              className={`px-4 py-2 rounded-full border-2 border-amber-150 bg-amber-600/20 text-amber-100 hover:bg-amber-600/40 transition-all duration-200 ${
+                location.pathname === '/reviews' ? activeClass : ''
+              }`}
+            >
+              📝 Reviews
             </Link>
 
 
-            <Link
+             {/* <Link
               to="/sentiment-analysis"
               className={`px-4 py-2 rounded-full border-2 border-amber-150 bg-amber-600/20 text-amber-100 hover:bg-amber-600/40 transition-all duration-200 ${
                 location.pathname === '/sentiment-analysis' ? activeClass : ''
               }`}
             >
               📊 Feedback Analysis
-            </Link>
+            </Link>  */}
           </nav>
 
           {/* Conditionally render Logout Button if the user is logged in */}

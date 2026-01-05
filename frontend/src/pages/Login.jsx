@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import React, { useState } from 'react';
+import { useNavigate,Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ const Login = () => {
     e.preventDefault();
 
     // Make an API call to validate login credentials
-    const response = await fetch('http://localhost:5002/api/login', {
+    const response = await fetch('http://localhost:5002/api/users/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password }),
@@ -72,12 +73,9 @@ const Login = () => {
         <div className="text-center mt-4">
           <p className="text-gray-600">
             Don't have an account?{' '}
-            <a
-              href="/register"
-              className="text-purple-600 font-semibold hover:underline"
-            >
+            <Link to="/register" className="text-purple-600 font-semibold hover:underline">
               Create an account
-            </a>
+            </Link>
           </p>
         </div>
       </div>

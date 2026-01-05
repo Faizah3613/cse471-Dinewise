@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ const Register = () => {
     }
 
     // Send the registration data to the backend
-    const response = await fetch('http://localhost:5002/api/register', {
+    const response = await fetch('http://localhost:5002/api/users/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password, role }), // Include the role in the request
@@ -104,9 +104,9 @@ const Register = () => {
         {/* Redirect to login page */}
         <p className="mt-4 text-center text-gray-600">
           Already have an account?{' '}
-          <a href="/login" className="text-purple-600 font-semibold hover:underline">
+          <Link to="/login" className="text-purple-600 font-semibold hover:underline">
             Login here
-          </a>
+          </Link>
         </p>
       </div>
     </div>
@@ -114,5 +114,8 @@ const Register = () => {
 };
 
 export default Register;
+
+
+
 
 

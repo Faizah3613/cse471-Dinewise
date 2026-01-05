@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import ProtectedRoute from '../components/ProtectedRoute'; // ADD IMPORT
+import ProtectedRoute from '../components/ProtectedRoute'; 
 
 const NewTable = () => {
   const navigate = useNavigate();

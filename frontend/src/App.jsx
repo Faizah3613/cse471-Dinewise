@@ -26,20 +26,21 @@ import RecommendationResults from './pages/RecommendationResults';
 
 import SaladBuilder from './pages/SaladBuilder';
 import SentimentAnalysis from './pages/SentimentAnalysis';
+import ReviewDashboard from './pages/ReviewDashboard';
 
 
 
 const App = () => {
   const navigate = useNavigate();
 
-  // Check if the user is logged in (token exists)
+
   const isLoggedIn = localStorage.getItem('token') !== null;
 
   // UseEffect to handle redirect before rendering routes
   useEffect(() => {
-    if (!isLoggedIn) {
-      // Redirect to login page immediately if not logged in
-      navigate("/login");  // Redirect to login if not logged in
+    const path = window.location.pathname;
+    if (!isLoggedIn && path !== '/register') {
+      navigate("/login");
     }
   }, [isLoggedIn, navigate]);  // Trigger redirection when isLoggedIn changes
 
@@ -72,6 +73,7 @@ const App = () => {
 
         <Route path="/salad-builder" element={isLoggedIn ? <SaladBuilder /> : <Login />} />
         <Route path="/sentiment-analysis" element={isLoggedIn ? <SentimentAnalysis /> : <Login />} />
+        <Route path="/reviews" element={isLoggedIn ? <ReviewDashboard /> : <Login />} />
       </Routes>
     </div>
   );

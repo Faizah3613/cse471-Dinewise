@@ -4,8 +4,8 @@ import protectRoute from '../middleware/protectRoute.js';
 const router = express.Router();
 
 // Live Table Availability (Feature 1)
-router.get("/", getTables);
-router.get("/:id", getTableById);
+router.get("/", protectRoute(['staff']), getTables);
+router.get("/:id",protectRoute(['staff']), getTableById);
 router.post("/", protectRoute(['staff']), createTable);
 router.put("/:id/status", protectRoute(['staff']), updateTableStatus);
 router.post("/merge", protectRoute(['staff']), mergeTables);

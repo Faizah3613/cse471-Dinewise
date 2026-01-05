@@ -22,11 +22,11 @@ const OrderDashboard = () => {
       if (activeTab === 'bar') endpoint = '/api/orders/bar';
       
       const token = localStorage.getItem('token');
-      // const response = await fetch(`http://localhost:5002${endpoint}`);
+      
       const response = await fetch(`http://localhost:5002${endpoint}`, {
         method: 'GET',
         headers: {
-          'Authorization': `Bearer ${token}`,  // Add the Authorization header with Bearer token
+          'Authorization': `Bearer ${token}`,  
         },
       });
       

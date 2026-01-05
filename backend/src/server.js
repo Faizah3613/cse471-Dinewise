@@ -8,6 +8,8 @@ import inventoryRoutes from './routes/inventoryRoutes.js';
 import sentimentAnalysisRoutes from './routes/sentimentAnalysisRoutes.js';
 import saladBuilderRoutes from './routes/saladBuilderRoutes.js';
 import recommendationRoutes from './routes/recommendationRoutes.js';
+import translationRoutes from './routes/translationRoutes.js';
+import reviewRoutes from './routes/reviewRoutes.js';
 import { connectDB } from './config/db.js';
 import dotenv from 'dotenv';
 import rateLimiter from './middleware/rateLimiter.js';
@@ -17,7 +19,8 @@ import cors from "cors";
 // dotenv.config();
 dotenv.config({ path: './../.env' });
 
-console.log('API Key loaded:', !!process.env.GOOGLE_AI_API_KEY);
+console.log('API Key loaded:', !!process.env.HUGGINGFACE_TOKEN); // Check if API key is loade
+
 
 console.log(process.env.MONGO_URI); // Log the MongoDB URI for debugging
 
@@ -46,6 +49,8 @@ app.use('/api/inventory', inventoryRoutes);
 app.use("/api/sentiment", sentimentAnalysisRoutes);
 app.use('/api/salad', saladBuilderRoutes);
 app.use('/api', recommendationRoutes);
+app.use('/api/translation', translationRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 connectDB().then( () => {
   app.listen(PORT, () => {

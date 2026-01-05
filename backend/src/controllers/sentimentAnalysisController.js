@@ -1,6 +1,6 @@
 // src/controllers/sentimentAnalysisController.js
 import Feedback from '../models/Feedback.js';
-import { analyzeSentiment } from '../services/googleAiService.js';
+import { analyzeSentiment } from '../services/huggingFaceService.js';
 
 export const analyzeFeedback = async (req, res) => {
   try {

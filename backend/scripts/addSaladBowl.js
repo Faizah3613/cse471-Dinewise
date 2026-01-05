@@ -1,9 +1,10 @@
 // addSaladBowl.js
 import mongoose from 'mongoose';
 import MenuItem from '../src/models/MenuItem.js';
+import dotenv from 'dotenv';
 
-const dbURI = 'your-mongodb-uri';
-
+const dbURI = process.env.MONGO_URI;
+dotenv.config();
 const saladBowl = {
   name: 'Custom Salad Bowl',
   description: 'Build your own salad with fresh ingredients',

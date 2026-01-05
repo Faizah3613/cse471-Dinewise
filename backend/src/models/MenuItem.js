@@ -1,13 +1,3 @@
-// import mongoose from 'mongoose';
-
-// const menuItemSchema = new mongoose.Schema({
-//   name: { type: String, required: true }, // Dish name
-//   description: { type: String }, // Optional: Description of the dish
-//   price: { type: Number, required: true }, // Price of the dish
-//   category: { type: String, enum: ['kitchen', 'bar'], required: true }, // Category for routing
-// });
-
-// export default mongoose.model('MenuItem', menuItemSchema);
 
 
 import mongoose from 'mongoose';

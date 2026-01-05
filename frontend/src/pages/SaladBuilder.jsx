@@ -82,6 +82,10 @@ const SaladBuilder = () => {
     }
   };
 
+  const removeFromBowl = (ingredientId) => {
+    setSelectedItems(prev => prev.filter(item => item.ingredientId !== ingredientId));
+  };
+
   const calculateTotalPrice = async () => {
     if (selectedItems.length === 0) {
       setTotalPrice(0);
@@ -165,7 +169,7 @@ const placeSaladOrder = async () => {
     greens: '🥬 Greens',
     proteins: '🍗 Proteins',
     veggies: '🥕 Veggies',
-    toppings: '🎉 Toppings',
+    toppings: '🍒 Toppings',
     dressings: '🥣 Dressings'
   };
 
@@ -174,7 +178,7 @@ const placeSaladOrder = async () => {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading fresh ingredients...</p>
+          <p className="text-gray-600">Loading fresh ingredients...🔃</p>
         </div>
       </div>
     );
@@ -309,21 +313,30 @@ const placeSaladOrder = async () => {
             </div>
 
             {selectedItems.length === 0 ? (
-              <p className="text-gray-500 text-center py-8">Your bowl is empty. Add some ingredients!</p>
+              <p className="text-gray-500 text-center py-8">Your bowl is empty😥. Add some ingredients!</p>
             ) : (
               <>
                 <div className="space-y-3 mb-6">
-                  {selectedItems.map((item, index) => (
-                    <div key={index} className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                      <div>
-                        <span className="font-semibold">{item.name}</span>
-                        <span className="text-sm text-gray-600 ml-2">({item.weightInGrams}g)</span>
+                  {selectedItems.map((item) => (
+                    <div key={item.ingredientId} className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                      <div className="flex items-center">
+                        <button
+                          onClick={() => removeFromBowl(item.ingredientId)}
+                          className="mr-2 text-red-500 hover:text-red-700 text-lg"
+                          title="Remove this ingredient"
+                        >
+                          ❌
+                        </button>
+                        <div>
+                          <span className="font-semibold">{item.name}</span>
+                          <span className="text-sm text-gray-600 ml-2">({item.weightInGrams}g)</span>
+                        </div>
                       </div>
                       <span className="text-green-600 font-semibold">
                         ৳{(item.pricePerGram * item.weightInGrams).toFixed(2)}
                       </span>
                     </div>
-                  ))}
+                    ))}
                 </div>
                 
                 <div className="border-t pt-4">
